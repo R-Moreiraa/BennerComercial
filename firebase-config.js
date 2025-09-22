@@ -1,15 +1,15 @@
-// Configuração do Firebase
-// IMPORTANTE: Substitua os valores abaixo pelas suas credenciais do Firebase
-
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "SUA_API_KEY_AQUI",
-    authDomain: "SEU_PROJECT_ID.firebaseapp.com",
-    projectId: "SEU_PROJECT_ID",
-    storageBucket: "SEU_PROJECT_ID.appspot.com",
-    messagingSenderId: "SEU_SENDER_ID",
-    appId: "SEU_APP_ID"
+  apiKey: "AIzaSyAPyXG4T3X6vrgbjesUiFNE51JWeKmzNGQ",
+  authDomain: "bennercomercial.firebaseapp.com",
+  projectId: "bennercomercial",
+  storageBucket: "bennercomercial.firebasestorage.app",
+  messagingSenderId: "771780140178",
+  appId: "1:771780140178:web:76afabcc6c1755db625a4b",
+  measurementId: "G-6GGE7F6BN3"
 };
 
-// Exportar configuração
-window.firebaseConfig = firebaseConfig;
-
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
