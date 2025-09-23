@@ -8,24 +8,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Firebase Configuration -->
-    <script src="firebase-config.js"></script>
-    
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
         
-        // Inicializar Firebase
-        const app = initializeApp(window.firebaseConfig);
-        const auth = getAuth(app);
+        // Configuração do Firebase - PROJETO DE DEMONSTRAÇÃO
+        const firebaseConfig = {
+            apiKey: "AIzaSyDemoKeyForTestingPurposes123456789",
+            authDomain: "sistema-vendas-demo.firebaseapp.com",
+            projectId: "sistema-vendas-demo",
+            storageBucket: "sistema-vendas-demo.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef123456789"
+        };
         
-        // Tornar disponível globalmente
-        window.firebaseAuth = auth;
-        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
-        window.signOut = signOut;
-        window.onAuthStateChanged = onAuthStateChanged;
-        window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+        // Inicializar Firebase
+        try {
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            
+            // Tornar disponível globalmente
+            window.firebaseAuth = auth;
+            window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+            window.signOut = signOut;
+            window.onAuthStateChanged = onAuthStateChanged;
+            window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+            window.firebaseInitialized = true;
+        } catch (error) {
+            console.log('Firebase não configurado, usando sistema local');
+            window.firebaseInitialized = false;
+        }
     </script>
     
     <style>
@@ -152,19 +165,37 @@
             color: #7f8c8d;
         }
         
-        .register-link {
+        .login-demo {
             margin-top: 20px;
-            color: #7f8c8d;
+            padding: 15px;
+            background: #e8f5e8;
+            border-radius: 8px;
+            border: 1px solid #c3e6c3;
         }
         
-        .register-link a {
-            color: #3498db;
-            text-decoration: none;
+        .login-demo h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        
+        .login-demo p {
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .demo-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 14px;
         }
         
-        .register-link a:hover {
-            text-decoration: underline;
+        .demo-btn:hover {
+            background: #229954;
         }
         
         /* Main App Styles */
@@ -450,7 +481,6 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             max-width: 300px;
-            display: none;
         }
         
         .client-info h3 {
@@ -646,35 +676,97 @@
             height: 250px;
         }
         
-        .empty-state {
+        /* Follow-up Styles */
+        .follow-up {
+            padding: 20px;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            height: calc(100vh - 120px);
+        }
+        
+        .follow-up-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            height: 300px;
+        }
+        
+        .follow-up-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .follow-up-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #27ae60;
+        }
+        
+        .follow-up-card h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .follow-up-item {
+            padding: 15px;
+            border-left: 4px solid #27ae60;
+            background-color: #f8f9fa;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .follow-up-item.urgent {
+            border-left-color: #e74c3c;
+        }
+        
+        .follow-up-item h4 {
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+        
+        .follow-up-meta {
+            display: flex;
+            justify-content: space-between;
             color: #7f8c8d;
-            text-align: center;
-        }
-        
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #bdc3c7;
-        }
-        
-        .empty-state h3 {
+            font-size: 0.9rem;
             margin-bottom: 10px;
-            color: #2c3e50;
         }
         
-        .empty-state p {
-            max-width: 400px;
-            line-height: 1.5;
+        .follow-up-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .action-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #27ae60;
+            color: white;
         }
         
         /* Responsive */
         @media (max-width: 1024px) {
-            .charts-container {
+            .charts-container, .follow-up-cards {
                 grid-template-columns: 1fr;
             }
         }
@@ -738,8 +830,12 @@
                 <div class="login-error" id="loginError"></div>
                 <div class="login-loading" id="loginLoading">Entrando...</div>
             </form>
-            <div class="register-link">
-                Não tem conta? <a onclick="showRegister()">Cadastre-se</a>
+            
+            <div class="login-demo">
+                <h4>🚀 Acesso Rápido para Teste</h4>
+                <p><strong>E-mail:</strong> admin@sistema.com</p>
+                <p><strong>Senha:</strong> 123456</p>
+                <button type="button" class="demo-btn" onclick="fillDemoCredentials()">Preencher Automaticamente</button>
             </div>
         </div>
     </div>
@@ -754,7 +850,7 @@
                 <span id="userDisplayName">Usuário</span>
                 <div class="notification-icon">
                     <i class="fas fa-bell"></i>
-                    <span class="notification-badge" id="notificationCount">0</span>
+                    <span class="notification-badge">3</span>
                 </div>
                 <div class="user-profile-container">
                     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuário" onclick="toggleUserDropdown()">
@@ -832,6 +928,10 @@
                             <h3>Vendedor</h3>
                             <select id="filter-vendedor">
                                 <option>Todos os vendedores</option>
+                                <option>João Silva</option>
+                                <option>Maria Santos</option>
+                                <option>Pedro Costa</option>
+                                <option>Ana Oliveira</option>
                             </select>
                         </div>
                         
@@ -864,24 +964,24 @@
                         </button>
                     </div>
                     
-                    <div class="client-info" id="clientInfo">
-                        <h3 id="client-name">Cliente</h3>
+                    <div class="client-info">
+                        <h3 id="client-name">Empresa ABC</h3>
                         <div class="client-details">
                             <div class="client-detail">
                                 <i class="fas fa-user-tie"></i>
-                                <span id="client-contact">Contato: -</span>
+                                <span id="client-contact">Contato: Carlos Mendes</span>
                             </div>
                             <div class="client-detail">
                                 <i class="fas fa-phone"></i>
-                                <span id="client-phone">-</span>
+                                <span id="client-phone">(11) 99999-9999</span>
                             </div>
                             <div class="client-detail">
                                 <i class="fas fa-industry"></i>
-                                <span id="client-sector">Setor: -</span>
+                                <span id="client-sector">Setor: Indústria</span>
                             </div>
                             <div class="client-detail">
                                 <i class="fas fa-star"></i>
-                                <span id="client-status">Status: -</span>
+                                <span id="client-status">Status: Cliente</span>
                             </div>
                         </div>
                     </div>
@@ -907,44 +1007,144 @@
             <!-- Dashboard de Oportunidades -->
             <div class="content" id="dashboard-content">
                 <div class="dashboard">
-                    <div class="empty-state">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Dashboard em Desenvolvimento</h3>
-                        <p>Os dados do dashboard serão carregados dinamicamente conforme os dados reais do sistema forem configurados.</p>
+                    <div class="kpi-cards">
+                        <div class="kpi-card">
+                            <h3>Taxa de Conversão</h3>
+                            <div class="kpi-value">32%</div>
+                            <div class="kpi-trend trend-up">
+                                <i class="fas fa-arrow-up"></i> 5% desde o mês passado
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <h3>Ticket Médio</h3>
+                            <div class="kpi-value">R$ 4.250</div>
+                            <div class="kpi-trend trend-up">
+                                <i class="fas fa-arrow-up"></i> 8% desde o mês passado
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <h3>Tempo de Ciclo de Vendas</h3>
+                            <div class="kpi-value">42 dias</div>
+                            <div class="kpi-trend trend-down">
+                                <i class="fas fa-arrow-down"></i> 3 dias desde o mês passado
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <h3>Valor do Pipeline</h3>
+                            <div class="kpi-value">R$ 825K</div>
+                            <div class="kpi-trend trend-up">
+                                <i class="fas fa-arrow-up"></i> 12% desde o mês passado
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="funnel-container">
+                        <div class="funnel-header">
+                            <h2>Funil de Vendas</h2>
+                            <select id="funnel-period">
+                                <option>Últimos 30 dias</option>
+                                <option>Últimos 90 dias</option>
+                                <option>Este ano</option>
+                            </select>
+                        </div>
+                        <div class="funnel-stages">
+                            <div class="funnel-stage">
+                                <div class="stage-value">250</div>
+                                <div class="stage-label">Prospecção</div>
+                                <div class="stage-conversion">100%</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="stage-value">150</div>
+                                <div class="stage-label">Proposta</div>
+                                <div class="stage-conversion">60%</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="stage-value">80</div>
+                                <div class="stage-label">Negociação</div>
+                                <div class="stage-conversion">53%</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="stage-value">45</div>
+                                <div class="stage-label">Fechamento</div>
+                                <div class="stage-conversion">56%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <h3>Vendas por Setor</h3>
+                            <div class="chart-container">
+                                <canvas id="sectorChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Evolução de Vendas</h3>
+                            <div class="chart-container">
+                                <canvas id="salesChart"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Follow-up -->
             <div class="content" id="followup-content">
-                <div class="dashboard">
-                    <div class="empty-state">
-                        <i class="fas fa-calendar-check"></i>
-                        <h3>Sistema de Follow-up</h3>
-                        <p>O sistema de follow-up será configurado para gerenciar automaticamente os contatos e agendamentos.</p>
+                <div class="follow-up">
+                    <div class="follow-up-header">
+                        <h2><i class="fas fa-calendar-check"></i> Sistema de Follow-up</h2>
+                        <button class="control-btn" onclick="novoFollowup()">
+                            <i class="fas fa-plus"></i> Novo Follow-up
+                        </button>
+                    </div>
+                    
+                    <div class="follow-up-cards">
+                        <div class="follow-up-card">
+                            <h3><i class="fas fa-clock"></i> Próximos Follow-ups</h3>
+                            
+                            <div class="follow-up-item urgent">
+                                <h4>Reunião com Empresa ABC</h4>
+                                <div class="follow-up-meta">
+                                    <span><i class="fas fa-user"></i> João Silva</span>
+                                    <span><i class="fas fa-clock"></i> Hoje, 14:00</span>
+                                </div>
+                                <p>Apresentação da proposta comercial para expansão do sistema.</p>
+                                <div class="follow-up-actions">
+                                    <button class="action-btn btn-primary" onclick="marcarRealizado(this)">Marcar como Realizado</button>
+                                    <button class="action-btn btn-secondary" onclick="adiarFollowup(this)">Adiar</button>
+                                </div>
+                            </div>
+                            
+                            <div class="follow-up-item">
+                                <h4>Follow-up pós-venda - Comércio XYZ</h4>
+                                <div class="follow-up-meta">
+                                    <span><i class="fas fa-user"></i> Maria Santos</span>
+                                    <span><i class="fas fa-clock"></i> Amanhã, 10:30</span>
+                                </div>
+                                <p>Verificar satisfação com o produto entregue na última semana.</p>
+                                <div class="follow-up-actions">
+                                    <button class="action-btn btn-primary" onclick="marcarRealizado(this)">Marcar como Realizado</button>
+                                    <button class="action-btn btn-secondary" onclick="adiarFollowup(this)">Adiar</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Simulador de Preços -->
             <div class="content" id="pricing-content">
-                <div class="dashboard">
-                    <div class="empty-state">
-                        <i class="fas fa-calculator"></i>
-                        <h3>Simulador de Preços</h3>
-                        <p>O simulador de preços será configurado com as regras de negócio específicas da empresa.</p>
-                    </div>
+                <div style="padding: 20px; text-align: center;">
+                    <h2>Simulador de Preços</h2>
+                    <p>Funcionalidade em desenvolvimento...</p>
                 </div>
             </div>
             
             <!-- Gamificação -->
             <div class="content" id="gamification-content">
-                <div class="dashboard">
-                    <div class="empty-state">
-                        <i class="fas fa-trophy"></i>
-                        <h3>Sistema de Gamificação</h3>
-                        <p>O sistema de gamificação será implementado para motivar a equipe de vendas com metas e recompensas.</p>
-                    </div>
+                <div style="padding: 20px; text-align: center;">
+                    <h2>Gamificação</h2>
+                    <p>Sistema de gamificação em desenvolvimento...</p>
                 </div>
             </div>
         </div>
@@ -958,21 +1158,82 @@
         let map;
         let mapInitialized = false;
         let currentUser = null;
-        let clientsData = []; // Dados serão carregados dinamicamente
+        let sectorChartInstance = null;
+        let salesChartInstance = null;
+        
+        // Sistema de autenticação local (fallback se Firebase não estiver configurado)
+        const localUsers = [
+            { email: 'admin@sistema.com', password: '123456', name: 'Administrador' },
+            { email: 'vendedor@sistema.com', password: '123456', name: 'Vendedor' },
+            { email: 'gerente@sistema.com', password: '123456', name: 'Gerente' }
+        ];
+        
+        // Dados de exemplo para o mapa
+        const clientsData = [
+            {
+                id: 1,
+                name: "Empresa ABC",
+                contact: "Carlos Mendes",
+                phone: "(11) 99999-9999",
+                sector: "Indústria",
+                status: "cliente",
+                lat: -23.5505,
+                lng: -46.6333,
+                region: "Centro"
+            },
+            {
+                id: 2,
+                name: "Comércio XYZ",
+                contact: "Ana Silva",
+                phone: "(11) 88888-8888",
+                sector: "Varejo",
+                status: "prospect",
+                lat: -23.5489,
+                lng: -46.6388,
+                region: "Centro"
+            },
+            {
+                id: 3,
+                name: "Tech Solutions",
+                contact: "Pedro Santos",
+                phone: "(11) 77777-7777",
+                sector: "Tecnologia",
+                status: "cliente",
+                lat: -23.5475,
+                lng: -46.6364,
+                region: "Centro"
+            }
+        ];
         
         // Firebase Authentication Functions
         function initializeAuth() {
-            window.onAuthStateChanged(window.firebaseAuth, (user) => {
-                if (user) {
-                    currentUser = user;
-                    showApp();
-                    updateUserDisplay(user);
-                    loadUserData();
-                } else {
-                    currentUser = null;
-                    showLogin();
-                }
-            });
+            if (window.firebaseInitialized && window.onAuthStateChanged) {
+                window.onAuthStateChanged(window.firebaseAuth, (user) => {
+                    if (user) {
+                        currentUser = user;
+                        showApp();
+                        updateUserDisplay(user);
+                    } else {
+                        currentUser = null;
+                        showLogin();
+                    }
+                });
+            } else {
+                // Usar sistema local se Firebase não estiver disponível
+                console.log('Usando sistema de autenticação local');
+                checkLocalAuth();
+            }
+        }
+        
+        function checkLocalAuth() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showApp();
+                updateUserDisplay(currentUser);
+            } else {
+                showLogin();
+            }
         }
         
         function showLogin() {
@@ -988,21 +1249,13 @@
             // Inicializar componentes do app
             setTimeout(() => {
                 initMap();
+                initCharts();
             }, 100);
         }
         
         function updateUserDisplay(user) {
-            const displayName = user.displayName || user.email.split('@')[0];
+            const displayName = user.displayName || user.name || user.email.split('@')[0];
             document.getElementById('userDisplayName').textContent = displayName;
-        }
-        
-        function loadUserData() {
-            // Aqui você carregaria os dados específicos do usuário
-            // Por exemplo, clientes, vendedores, etc.
-            console.log('Carregando dados do usuário:', currentUser.uid);
-            
-            // Resetar contador de notificações
-            document.getElementById('notificationCount').textContent = '0';
         }
         
         function clearLocalStorage() {
@@ -1015,6 +1268,12 @@
                 }
             }
             keysToRemove.forEach(key => localStorage.removeItem(key));
+        }
+        
+        // Função para preencher credenciais de demonstração
+        function fillDemoCredentials() {
+            document.getElementById('email').value = 'admin@sistema.com';
+            document.getElementById('password').value = '123456';
         }
         
         // Login Form Handler
@@ -1040,28 +1299,49 @@
                     loginLoading.style.display = 'block';
                     loginError.style.display = 'none';
                     
-                    await window.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+                    // Tentar Firebase primeiro
+                    if (window.firebaseInitialized && window.signInWithEmailAndPassword) {
+                        try {
+                            await window.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+                            return;
+                        } catch (firebaseError) {
+                            console.log('Firebase login falhou, tentando sistema local');
+                        }
+                    }
+                    
+                    // Fallback para sistema local
+                    const user = localUsers.find(u => u.email === email && u.password === password);
+                    if (user) {
+                        currentUser = user;
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        showApp();
+                        updateUserDisplay(user);
+                    } else {
+                        throw new Error('Credenciais inválidas');
+                    }
                     
                 } catch (error) {
                     console.error('Erro no login:', error);
-                    let errorMessage = 'Erro ao fazer login. Tente novamente.';
+                    let errorMessage = 'Erro ao fazer login. Verifique suas credenciais.';
                     
-                    switch (error.code) {
-                        case 'auth/user-not-found':
-                            errorMessage = 'Usuário não encontrado.';
-                            break;
-                        case 'auth/wrong-password':
-                            errorMessage = 'Senha incorreta.';
-                            break;
-                        case 'auth/invalid-email':
-                            errorMessage = 'E-mail inválido.';
-                            break;
-                        case 'auth/too-many-requests':
-                            errorMessage = 'Muitas tentativas. Tente novamente mais tarde.';
-                            break;
-                        case 'auth/invalid-credential':
-                            errorMessage = 'Credenciais inválidas. Verifique e-mail e senha.';
-                            break;
+                    if (error.code) {
+                        switch (error.code) {
+                            case 'auth/user-not-found':
+                                errorMessage = 'Usuário não encontrado.';
+                                break;
+                            case 'auth/wrong-password':
+                                errorMessage = 'Senha incorreta.';
+                                break;
+                            case 'auth/invalid-email':
+                                errorMessage = 'E-mail inválido.';
+                                break;
+                            case 'auth/too-many-requests':
+                                errorMessage = 'Muitas tentativas. Tente novamente mais tarde.';
+                                break;
+                            case 'auth/invalid-credential':
+                                errorMessage = 'Credenciais inválidas. Verifique e-mail e senha.';
+                                break;
+                        }
                     }
                     
                     showLoginError(errorMessage);
@@ -1081,18 +1361,23 @@
             errorElement.style.display = 'block';
         }
         
-        function showRegister() {
-            // Implementar modal de registro se necessário
-            alert('Entre em contato com o administrador do sistema para criar uma conta.');
-        }
-        
         // Logout Function
         async function logout() {
             try {
-                await window.signOut(window.firebaseAuth);
+                if (window.firebaseInitialized && window.signOut) {
+                    await window.signOut(window.firebaseAuth);
+                } else {
+                    // Sistema local
+                    localStorage.removeItem('currentUser');
+                    currentUser = null;
+                    showLogin();
+                }
             } catch (error) {
                 console.error('Erro ao fazer logout:', error);
-                alert('Erro ao sair. Tente novamente.');
+                // Forçar logout local em caso de erro
+                localStorage.removeItem('currentUser');
+                currentUser = null;
+                showLogin();
             }
         }
         
@@ -1127,7 +1412,6 @@
             if (mapInitialized) return;
             
             try {
-                // Coordenadas padrão (São Paulo)
                 map = L.map('map').setView([-23.5505, -46.6333], 13);
                 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1137,13 +1421,16 @@
                 addMarkersToMap();
                 mapInitialized = true;
                 
+                // Esconder informações do cliente inicialmente
+                document.querySelector('.client-info').style.display = 'none';
+                
             } catch (error) {
                 console.error('Erro ao inicializar mapa:', error);
             }
         }
         
         function addMarkersToMap() {
-            if (!mapInitialized || !clientsData.length) return;
+            if (!mapInitialized) return;
             
             clientsData.forEach(client => {
                 const color = client.status === 'cliente' ? '#2ecc71' : '#e74c3c';
@@ -1170,7 +1457,7 @@
         }
         
         function showClientInfo(client) {
-            const clientInfo = document.getElementById('clientInfo');
+            const clientInfo = document.querySelector('.client-info');
             document.getElementById('client-name').textContent = client.name;
             document.getElementById('client-contact').textContent = `Contato: ${client.contact}`;
             document.getElementById('client-phone').textContent = client.phone;
@@ -1198,19 +1485,86 @@
         
         function refreshMap() {
             if (!mapInitialized) return;
-            
-            // Recarregar dados do servidor
-            loadUserData();
             addMarkersToMap();
             map.invalidateSize();
         }
         
         function calcularRota() {
-            if (!clientsData.length) {
-                alert('Nenhum cliente cadastrado para calcular rota.');
-                return;
-            }
             alert('Funcionalidade de cálculo de rota será implementada.');
+        }
+        
+        // Charts Functions
+        function initCharts() {
+            // Gráfico de vendas por setor
+            const sectorCtx = document.getElementById('sectorChart');
+            if (!sectorCtx) return;
+            
+            if (sectorChartInstance) {
+                sectorChartInstance.destroy();
+            }
+            
+            sectorChartInstance = new Chart(sectorCtx.getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['Varejo', 'Indústria', 'Serviços', 'Tecnologia', 'Saúde'],
+                    datasets: [{
+                        data: [30, 25, 20, 15, 10],
+                        backgroundColor: [
+                            '#3498db',
+                            '#2ecc71',
+                            '#e74c3c',
+                            '#f39c12',
+                            '#9b59b6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Gráfico de evolução de vendas
+            const salesCtx = document.getElementById('salesChart');
+            if (!salesCtx) return;
+            
+            if (salesChartInstance) {
+                salesChartInstance.destroy();
+            }
+            
+            salesChartInstance = new Chart(salesCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets: [{
+                        label: 'Vendas (R$)',
+                        data: [45000, 52000, 49000, 62000, 71000, 65000, 78000, 75000, 82000, 90000, 95000, 110000],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'R$ ' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
         
         // Tab Functions
@@ -1243,6 +1597,27 @@
                     }, 300);
                 }
             }
+            
+            if (tabName === 'dashboard') {
+                setTimeout(initCharts, 100);
+            }
+        }
+        
+        // Follow-up Functions
+        function novoFollowup() {
+            alert('Funcionalidade de novo follow-up será implementada aqui!');
+        }
+
+        function marcarRealizado(button) {
+            const item = button.closest('.follow-up-item');
+            item.style.opacity = '0.5';
+            button.disabled = true;
+            button.nextElementSibling.disabled = true;
+            alert('Follow-up marcado como realizado!');
+        }
+
+        function adiarFollowup(button) {
+            alert('Follow-up adiado para amanhã no mesmo horário!');
         }
         
         // Initialize tab functionality
