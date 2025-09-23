@@ -764,10 +764,843 @@
             color: white;
         }
         
+        /* Pricing Simulator Styles */
+        .pricing-simulator {
+            padding: 20px;
+            overflow-y: auto;
+            width: 100%;
+            height: calc(100vh - 120px);
+        }
+        
+        .pricing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-header h2 {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .pricing-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-form-section,
+        .pricing-results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #e74c3c;
+        }
+        
+        .pricing-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+        
+        .pricing-scenarios {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .scenario-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scenario-conservative {
+            border-color: #f39c12;
+        }
+        
+        .scenario-balanced {
+            border-color: #27ae60;
+        }
+        
+        .scenario-premium {
+            border-color: #8e44ad;
+        }
+        
+        .scenario-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .scenario-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .scenario-conservative .scenario-price {
+            color: #f39c12;
+        }
+        
+        .scenario-balanced .scenario-price {
+            color: #27ae60;
+        }
+        
+        .scenario-premium .scenario-price {
+            color: #8e44ad;
+        }
+        
+        .scenario-details {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+        
+        .pricing-breakdown {
+            border-top: 1px solid #ecf0f1;
+            padding-top: 20px;
+        }
+        
+        .pricing-breakdown h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+        
+        .breakdown-item.total {
+            border-top: 2px solid #e74c3c;
+            border-bottom: none;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+        
+        .competitive-analysis {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .competitor-input {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .competitor-input label {
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+        
+        .competitor-input input {
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .competitiveness-result {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+        }
+        
+        .competitiveness-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .indicator-label {
+            font-weight: 500;
+            color: #34495e;
+        }
+        
+        .indicator-value {
+            font-weight: bold;
+        }
+        
+        .competitiveness-recommendation {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .pricing-history {
+            grid-column: 1 / -1;
+        }
+        
+        .history-list {
+            min-height: 100px;
+        }
+        
+        .history-empty {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 40px 20px;
+        }
+        
+        .history-empty i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .history-item {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .history-item-title {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .history-item-date {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+        
+        .history-item-details {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #34495e;
+        }
+        
         /* Responsive */
         @media (max-width: 1024px) {
-            .charts-container, .follow-up-cards {
+            .pricing-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .pricing-scenarios {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Gamification Styles */
+        .gamification-system {
+            padding: 20px;
+            overflow-y: auto;
+            width: 100%;
+            height: calc(100vh - 120px);
+        }
+        
+        .gamification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .gamification-header h2 {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .gamification-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .gamification-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .gamification-bottom {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .gamification-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #e74c3c;
+        }
+        
+        .gamification-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* User Profile Styles */
+        .user-stats {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .user-avatar {
+            position: relative;
+        }
+        
+        .user-avatar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #e74c3c;
+        }
+        
+        .user-level {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: #27ae60;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .user-info h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .user-title {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .user-points {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+        
+        .points-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .points-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .progress-section {
+            margin-bottom: 25px;
+        }
+        
+        .progress-item {
+            margin-bottom: 15px;
+        }
+        
+        .progress-item span:first-child {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+        
+        .progress-bar {
+            background: #ecf0f1;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+        
+        .achievements-preview h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .achievement-badges {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .badge:hover {
+            transform: scale(1.1);
+        }
+        
+        .badge.earned {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+        
+        .badge.locked {
+            background: #bdc3c7;
+            color: #7f8c8d;
+        }
+        
+        /* Ranking Styles */
+        .ranking-podium {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        
+        .podium-position {
+            text-align: center;
+            position: relative;
+        }
+        
+        .podium-position.first {
+            order: 2;
+        }
+        
+        .podium-position.second {
+            order: 1;
+        }
+        
+        .podium-position.third {
+            order: 3;
+        }
+        
+        .podium-crown {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f39c12;
+            font-size: 1.5rem;
+        }
+        
+        .podium-avatar {
+            margin-bottom: 10px;
+        }
+        
+        .podium-avatar img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid;
+        }
+        
+        .podium-position.first .podium-avatar img {
+            border-color: #f39c12;
+            width: 70px;
+            height: 70px;
+        }
+        
+        .podium-position.second .podium-avatar img {
+            border-color: #95a5a6;
+        }
+        
+        .podium-position.third .podium-avatar img {
+            border-color: #cd7f32;
+        }
+        
+        .position-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .podium-position.first .position-number {
+            color: #f39c12;
+        }
+        
+        .podium-position.second .position-number {
+            color: #95a5a6;
+        }
+        
+        .podium-position.third .position-number {
+            color: #cd7f32;
+        }
+        
+        .seller-name {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+        
+        .seller-points {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .ranking-list {
+            border-top: 1px solid #ecf0f1;
+            padding-top: 20px;
+        }
+        
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+        
+        .ranking-item .rank {
+            font-weight: bold;
+            color: #34495e;
+            width: 30px;
+        }
+        
+        .ranking-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ecf0f1;
+        }
+        
+        .ranking-item .name {
+            flex: 1;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .ranking-item .points {
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        
+        /* Challenges Styles */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .challenge-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #bdc3c7;
+            transition: all 0.3s;
+        }
+        
+        .challenge-item.active {
+            border-left-color: #3498db;
+            background: #ebf3fd;
+        }
+        
+        .challenge-item.completed {
+            border-left-color: #27ae60;
+            background: #eafaf1;
+        }
+        
+        .challenge-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .challenge-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .challenge-item.completed .challenge-icon {
+            background: #27ae60;
+        }
+        
+        .challenge-info h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .challenge-info p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .challenge-progress {
+            margin-bottom: 10px;
+        }
+        
+        .challenge-progress span {
+            color: #34495e;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .challenge-reward {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #e74c3c;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .challenge-reward.completed {
+            color: #27ae60;
+        }
+        
+        /* Achievements Styles */
+        .achievements-categories {
+            margin-top: 20px;
+        }
+        
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .category-tab {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: #7f8c8d;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .category-tab.active {
+            color: #e74c3c;
+            border-bottom-color: #e74c3c;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .achievement-card.earned {
+            background: linear-gradient(135deg, #fff5e6, #ffeaa7);
+            border-color: #f39c12;
+        }
+        
+        .achievement-card.locked {
+            opacity: 0.6;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievement-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .achievement-card.earned .achievement-badge {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+        
+        .achievement-card.locked .achievement-badge {
+            background: #bdc3c7;
+            color: #7f8c8d;
+        }
+        
+        .achievement-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-card p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .achievement-date {
+            color: #27ae60;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .achievement-progress {
+            color: #3498db;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .gamification-container,
+            .gamification-bottom {
+                grid-template-columns: 1fr;
+            }
+            
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gamification-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .gamification-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .user-stats {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .ranking-podium {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .podium-position {
+                order: unset !important;
+            }
+            
+            .category-tabs {
+                flex-wrap: wrap;
             }
         }
         
@@ -1134,19 +1967,495 @@
             
             <!-- Simulador de Preços -->
             <div class="content" id="pricing-content">
-                <div style="padding: 20px; text-align: center;">
-                    <h2>Simulador de Preços</h2>
-                    <p>Funcionalidade em desenvolvimento...</p>
+                <div class="pricing-simulator">
+                    <div class="pricing-header">
+                        <h2><i class="fas fa-calculator"></i> Simulador de Preços</h2>
+                        <div class="pricing-actions">
+                            <button class="control-btn" onclick="salvarSimulacao()">
+                                <i class="fas fa-save"></i> Salvar Simulação
+                            </button>
+                            <button class="control-btn" onclick="exportarPDF()">
+                                <i class="fas fa-file-pdf"></i> Exportar PDF
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-container">
+                        <!-- Formulário de Entrada -->
+                        <div class="pricing-form-section">
+                            <div class="pricing-card">
+                                <h3><i class="fas fa-edit"></i> Dados do Produto/Serviço</h3>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="produto-nome">Nome do Produto/Serviço</label>
+                                        <input type="text" id="produto-nome" placeholder="Ex: Sistema ERP Benner">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="categoria">Categoria</label>
+                                        <select id="categoria">
+                                            <option value="software">Software</option>
+                                            <option value="consultoria">Consultoria</option>
+                                            <option value="treinamento">Treinamento</option>
+                                            <option value="suporte">Suporte</option>
+                                            <option value="customizacao">Customização</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="custo-base">Custo Base (R$)</label>
+                                        <input type="number" id="custo-base" placeholder="0,00" step="0.01" oninput="calcularPrecos()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="margem-lucro">Margem de Lucro (%)</label>
+                                        <input type="number" id="margem-lucro" placeholder="30" step="0.1" oninput="calcularPrecos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="impostos">Impostos (%)</label>
+                                        <input type="number" id="impostos" placeholder="15" step="0.1" oninput="calcularPrecos()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="desconto-max">Desconto Máximo (%)</label>
+                                        <input type="number" id="desconto-max" placeholder="10" step="0.1" oninput="calcularPrecos()">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="volume-vendas">Volume de Vendas Estimado</label>
+                                        <select id="volume-vendas" onchange="calcularPrecos()">
+                                            <option value="1">1-10 unidades</option>
+                                            <option value="2">11-50 unidades</option>
+                                            <option value="3">51-100 unidades</option>
+                                            <option value="4">100+ unidades</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="prazo-pagamento">Prazo de Pagamento</label>
+                                        <select id="prazo-pagamento" onchange="calcularPrecos()">
+                                            <option value="0">À vista</option>
+                                            <option value="30">30 dias</option>
+                                            <option value="60">60 dias</option>
+                                            <option value="90">90 dias</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resultados da Simulação -->
+                        <div class="pricing-results-section">
+                            <div class="pricing-card">
+                                <h3><i class="fas fa-chart-line"></i> Cenários de Preços</h3>
+                                
+                                <div class="pricing-scenarios">
+                                    <div class="scenario-card scenario-conservative">
+                                        <h4>Cenário Conservador</h4>
+                                        <div class="scenario-price" id="preco-conservador">R$ 0,00</div>
+                                        <div class="scenario-details">
+                                            <span>Margem reduzida para competitividade</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="scenario-card scenario-balanced">
+                                        <h4>Cenário Equilibrado</h4>
+                                        <div class="scenario-price" id="preco-equilibrado">R$ 0,00</div>
+                                        <div class="scenario-details">
+                                            <span>Margem padrão recomendada</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="scenario-card scenario-premium">
+                                        <h4>Cenário Premium</h4>
+                                        <div class="scenario-price" id="preco-premium">R$ 0,00</div>
+                                        <div class="scenario-details">
+                                            <span>Margem alta para valor agregado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="pricing-breakdown">
+                                    <h4>Detalhamento do Preço (Cenário Equilibrado)</h4>
+                                    <div class="breakdown-item">
+                                        <span>Custo Base:</span>
+                                        <span id="breakdown-custo">R$ 0,00</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Margem de Lucro:</span>
+                                        <span id="breakdown-margem">R$ 0,00</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Impostos:</span>
+                                        <span id="breakdown-impostos">R$ 0,00</span>
+                                    </div>
+                                    <div class="breakdown-item total">
+                                        <span>Preço Final:</span>
+                                        <span id="breakdown-total">R$ 0,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pricing-card">
+                                <h3><i class="fas fa-balance-scale"></i> Análise Competitiva</h3>
+                                
+                                <div class="competitive-analysis">
+                                    <div class="competitor-input">
+                                        <label for="preco-concorrente">Preço do Concorrente (R$)</label>
+                                        <input type="number" id="preco-concorrente" placeholder="0,00" step="0.01" oninput="analisarCompetitividade()">
+                                    </div>
+                                    
+                                    <div class="competitiveness-result" id="resultado-competitividade">
+                                        <div class="competitiveness-indicator">
+                                            <span class="indicator-label">Posicionamento:</span>
+                                            <span class="indicator-value" id="posicionamento">-</span>
+                                        </div>
+                                        <div class="competitiveness-recommendation" id="recomendacao">
+                                            Digite o preço do concorrente para análise
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Histórico de Simulações -->
+                    <div class="pricing-history">
+                        <div class="pricing-card">
+                            <h3><i class="fas fa-history"></i> Histórico de Simulações</h3>
+                            <div class="history-list" id="historico-simulacoes">
+                                <div class="history-empty">
+                                    <i class="fas fa-inbox"></i>
+                                    <p>Nenhuma simulação salva ainda</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Gamificação -->
             <div class="content" id="gamification-content">
-                <div style="padding: 20px; text-align: center;">
-                    <h2>Gamificação</h2>
-                    <p>Sistema de gamificação em desenvolvimento...</p>
+                <div class="gamification-system">
+                    <div class="gamification-header">
+                        <h2><i class="fas fa-trophy"></i> Sistema de Gamificação</h2>
+                        <div class="gamification-actions">
+                            <button class="control-btn" onclick="resetarPontuacao()">
+                                <i class="fas fa-redo"></i> Resetar Período
+                            </button>
+                            <button class="control-btn" onclick="exportarRanking()">
+                                <i class="fas fa-download"></i> Exportar Ranking
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="gamification-container">
+                        <!-- Perfil do Usuário -->
+                        <div class="user-profile-section">
+                            <div class="gamification-card">
+                                <h3><i class="fas fa-user-circle"></i> Meu Perfil</h3>
+                                
+                                <div class="user-stats">
+                                    <div class="user-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar">
+                                        <div class="user-level">Nível 12</div>
+                                    </div>
+                                    
+                                    <div class="user-info">
+                                        <h4 id="user-name">Administrador</h4>
+                                        <div class="user-title">Vendedor Sênior</div>
+                                        <div class="user-points">
+                                            <span class="points-value">2.450</span>
+                                            <span class="points-label">pontos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-section">
+                                    <div class="progress-item">
+                                        <span>Progresso para Nível 13</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 75%"></div>
+                                        </div>
+                                        <span class="progress-text">750/1000 XP</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievements-preview">
+                                    <h4>Últimas Conquistas</h4>
+                                    <div class="achievement-badges">
+                                        <div class="badge earned" title="Vendedor do Mês">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="badge earned" title="Meta Batida">
+                                            <i class="fas fa-target"></i>
+                                        </div>
+                                        <div class="badge earned" title="Cliente Fidelizado">
+                                            <i class="fas fa-handshake"></i>
+                                        </div>
+                                        <div class="badge locked" title="Próxima conquista">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ranking de Vendedores -->
+                        <div class="ranking-section">
+                            <div class="gamification-card">
+                                <h3><i class="fas fa-medal"></i> Ranking Mensal</h3>
+                                
+                                <div class="ranking-podium">
+                                    <div class="podium-position second">
+                                        <div class="podium-avatar">
+                                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="2º lugar">
+                                        </div>
+                                        <div class="podium-info">
+                                            <div class="position-number">2º</div>
+                                            <div class="seller-name">Maria Santos</div>
+                                            <div class="seller-points">2.180 pts</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="podium-position first">
+                                        <div class="podium-crown">
+                                            <i class="fas fa-crown"></i>
+                                        </div>
+                                        <div class="podium-avatar">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="1º lugar">
+                                        </div>
+                                        <div class="podium-info">
+                                            <div class="position-number">1º</div>
+                                            <div class="seller-name">Administrador</div>
+                                            <div class="seller-points">2.450 pts</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="podium-position third">
+                                        <div class="podium-avatar">
+                                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="3º lugar">
+                                        </div>
+                                        <div class="podium-info">
+                                            <div class="position-number">3º</div>
+                                            <div class="seller-name">Pedro Costa</div>
+                                            <div class="seller-points">1.920 pts</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ranking-list">
+                                    <div class="ranking-item">
+                                        <span class="rank">4º</span>
+                                        <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Ana Oliveira">
+                                        <span class="name">Ana Oliveira</span>
+                                        <span class="points">1.650 pts</span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="rank">5º</span>
+                                        <img src="https://randomuser.me/api/portraits/men/89.jpg" alt="Carlos Silva">
+                                        <span class="name">Carlos Silva</span>
+                                        <span class="points">1.420 pts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gamification-bottom">
+                        <!-- Metas e Desafios -->
+                        <div class="challenges-section">
+                            <div class="gamification-card">
+                                <h3><i class="fas fa-bullseye"></i> Metas e Desafios</h3>
+                                
+                                <div class="challenges-grid">
+                                    <div class="challenge-item active">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>Meta Mensal</h4>
+                                            <p>Atingir R$ 50.000 em vendas</p>
+                                            <div class="challenge-progress">
+                                                <div class="progress-bar">
+                                                    <div class="progress-fill" style="width: 68%"></div>
+                                                </div>
+                                                <span>R$ 34.000 / R$ 50.000</span>
+                                            </div>
+                                            <div class="challenge-reward">
+                                                <i class="fas fa-gift"></i> +500 pontos
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="challenge-item active">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>Novos Clientes</h4>
+                                            <p>Cadastrar 5 novos clientes</p>
+                                            <div class="challenge-progress">
+                                                <div class="progress-bar">
+                                                    <div class="progress-fill" style="width: 60%"></div>
+                                                </div>
+                                                <span>3 / 5 clientes</span>
+                                            </div>
+                                            <div class="challenge-reward">
+                                                <i class="fas fa-gift"></i> +300 pontos
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="challenge-item completed">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>Follow-ups</h4>
+                                            <p>Realizar 10 follow-ups</p>
+                                            <div class="challenge-progress">
+                                                <div class="progress-bar">
+                                                    <div class="progress-fill" style="width: 100%"></div>
+                                                </div>
+                                                <span>10 / 10 follow-ups</span>
+                                            </div>
+                                            <div class="challenge-reward completed">
+                                                <i class="fas fa-check"></i> +200 pontos
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="challenge-item">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>Pontualidade</h4>
+                                            <p>7 dias consecutivos sem atraso</p>
+                                            <div class="challenge-progress">
+                                                <div class="progress-bar">
+                                                    <div class="progress-fill" style="width: 42%"></div>
+                                                </div>
+                                                <span>3 / 7 dias</span>
+                                            </div>
+                                            <div class="challenge-reward">
+                                                <i class="fas fa-gift"></i> +150 pontos
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Conquistas e Badges -->
+                        <div class="achievements-section">
+                            <div class="gamification-card">
+                                <h3><i class="fas fa-award"></i> Conquistas</h3>
+                                
+                                <div class="achievements-categories">
+                                    <div class="category-tabs">
+                                        <button class="category-tab active" onclick="showAchievements('vendas')">Vendas</button>
+                                        <button class="category-tab" onclick="showAchievements('clientes')">Clientes</button>
+                                        <button class="category-tab" onclick="showAchievements('equipe')">Equipe</button>
+                                    </div>
+                                    
+                                    <div class="achievements-grid" id="achievements-vendas">
+                                        <div class="achievement-card earned">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <h4>Primeira Venda</h4>
+                                            <p>Realize sua primeira venda</p>
+                                            <div class="achievement-date">Conquistado em 15/01/2024</div>
+                                        </div>
+                                        
+                                        <div class="achievement-card earned">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-fire"></i>
+                                            </div>
+                                            <h4>Vendedor do Mês</h4>
+                                            <p>Seja o vendedor com mais pontos no mês</p>
+                                            <div class="achievement-date">Conquistado em 28/02/2024</div>
+                                        </div>
+                                        
+                                        <div class="achievement-card earned">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-target"></i>
+                                            </div>
+                                            <h4>Meta Batida</h4>
+                                            <p>Atinja 100% da meta mensal</p>
+                                            <div class="achievement-date">Conquistado em 30/03/2024</div>
+                                        </div>
+                                        
+                                        <div class="achievement-card locked">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
+                                            <h4>Vendas Milionárias</h4>
+                                            <p>Atinja R$ 1.000.000 em vendas</p>
+                                            <div class="achievement-progress">R$ 450.000 / R$ 1.000.000</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="achievements-grid" id="achievements-clientes" style="display: none;">
+                                        <div class="achievement-card earned">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-handshake"></i>
+                                            </div>
+                                            <h4>Primeiro Cliente</h4>
+                                            <p>Cadastre seu primeiro cliente</p>
+                                            <div class="achievement-date">Conquistado em 10/01/2024</div>
+                                        </div>
+                                        
+                                        <div class="achievement-card earned">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-heart"></i>
+                                            </div>
+                                            <h4>Cliente Fiel</h4>
+                                            <p>Mantenha um cliente por 6 meses</p>
+                                            <div class="achievement-date">Conquistado em 15/07/2024</div>
+                                        </div>
+                                        
+                                        <div class="achievement-card locked">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
+                                            <h4>Rede de Contatos</h4>
+                                            <p>Cadastre 100 clientes</p>
+                                            <div class="achievement-progress">67 / 100 clientes</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="achievements-grid" id="achievements-equipe" style="display: none;">
+                                        <div class="achievement-card earned">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                            <h4>Trabalho em Equipe</h4>
+                                            <p>Colabore em 5 vendas com colegas</p>
+                                            <div class="achievement-date">Conquistado em 20/02/2024</div>
+                                        </div>
+                                        
+                                        <div class="achievement-card locked">
+                                            <div class="achievement-badge">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
+                                            <h4>Mentor</h4>
+                                            <p>Ajude 3 novos vendedores</p>
+                                            <div class="achievement-progress">1 / 3 vendedores</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }</div>
         </div>
     </div>
 
@@ -1620,14 +2929,223 @@
             alert('Follow-up adiado para amanhã no mesmo horário!');
         }
         
-        // Initialize tab functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabName = tab.getAttribute('data-tab');
-                    switchTab(tabName);
-                });
+        // Pricing Simulator Functions
+        function calcularPrecos() {
+            const custoBase = parseFloat(document.getElementById('custo-base').value) || 0;
+            const margemLucro = parseFloat(document.getElementById('margem-lucro').value) || 30;
+            const impostos = parseFloat(document.getElementById('impostos').value) || 15;
+            const volume = parseInt(document.getElementById('volume-vendas').value) || 1;
+            const prazo = parseInt(document.getElementById('prazo-pagamento').value) || 0;
+            
+            if (custoBase <= 0) {
+                // Limpar resultados se não há custo base
+                document.getElementById('preco-conservador').textContent = 'R$ 0,00';
+                document.getElementById('preco-equilibrado').textContent = 'R$ 0,00';
+                document.getElementById('preco-premium').textContent = 'R$ 0,00';
+                document.getElementById('breakdown-custo').textContent = 'R$ 0,00';
+                document.getElementById('breakdown-margem').textContent = 'R$ 0,00';
+                document.getElementById('breakdown-impostos').textContent = 'R$ 0,00';
+                document.getElementById('breakdown-total').textContent = 'R$ 0,00';
+                return;
+            }
+            
+            // Ajustes baseados no volume
+            let ajusteVolume = 1;
+            switch(volume) {
+                case 2: ajusteVolume = 0.95; break; // 5% desconto
+                case 3: ajusteVolume = 0.90; break; // 10% desconto
+                case 4: ajusteVolume = 0.85; break; // 15% desconto
+            }
+            
+            // Ajuste baseado no prazo de pagamento
+            let ajustePrazo = 1;
+            if (prazo > 0) {
+                ajustePrazo = 1 + (prazo * 0.002); // 0.2% por dia de prazo
+            }
+            
+            // Cálculos dos cenários
+            const margemConservadora = margemLucro * 0.7; // 70% da margem
+            const margemEquilibrada = margemLucro;
+            const margemPremium = margemLucro * 1.5; // 150% da margem
+            
+            // Preço conservador
+            const precoConservador = (custoBase * (1 + margemConservadora/100) * (1 + impostos/100) * ajusteVolume * ajustePrazo);
+            
+            // Preço equilibrado
+            const precoEquilibrado = (custoBase * (1 + margemEquilibrada/100) * (1 + impostos/100) * ajusteVolume * ajustePrazo);
+            
+            // Preço premium
+            const precoPremium = (custoBase * (1 + margemPremium/100) * (1 + impostos/100) * ajusteVolume * ajustePrazo);
+            
+            // Atualizar interface
+            document.getElementById('preco-conservador').textContent = formatarMoeda(precoConservador);
+            document.getElementById('preco-equilibrado').textContent = formatarMoeda(precoEquilibrado);
+            document.getElementById('preco-premium').textContent = formatarMoeda(precoPremium);
+            
+            // Breakdown do preço equilibrado
+            const margemValor = custoBase * (margemEquilibrada/100);
+            const impostosValor = (custoBase + margemValor) * (impostos/100);
+            
+            document.getElementById('breakdown-custo').textContent = formatarMoeda(custoBase);
+            document.getElementById('breakdown-margem').textContent = formatarMoeda(margemValor);
+            document.getElementById('breakdown-impostos').textContent = formatarMoeda(impostosValor);
+            document.getElementById('breakdown-total').textContent = formatarMoeda(precoEquilibrado);
+            
+            // Atualizar análise competitiva se houver preço do concorrente
+            analisarCompetitividade();
+        }
+        
+        function analisarCompetitividade() {
+            const precoConcorrente = parseFloat(document.getElementById('preco-concorrente').value) || 0;
+            const precoEquilibrado = parseFloat(document.getElementById('preco-equilibrado').textContent.replace('R$ ', '').replace('.', '').replace(',', '.')) || 0;
+            
+            if (precoConcorrente <= 0 || precoEquilibrado <= 0) {
+                document.getElementById('posicionamento').textContent = '-';
+                document.getElementById('recomendacao').textContent = 'Digite o preço do concorrente para análise';
+                return;
+            }
+            
+            const diferenca = ((precoEquilibrado - precoConcorrente) / precoConcorrente) * 100;
+            let posicionamento, recomendacao, cor;
+            
+            if (diferenca < -10) {
+                posicionamento = 'Muito Competitivo';
+                recomendacao = 'Seu preço está significativamente abaixo do concorrente. Considere aumentar a margem.';
+                cor = '#27ae60';
+            } else if (diferenca < 0) {
+                posicionamento = 'Competitivo';
+                recomendacao = 'Preço competitivo. Boa posição para conquistar o cliente.';
+                cor = '#27ae60';
+            } else if (diferenca < 10) {
+                posicionamento = 'Equilibrado';
+                recomendacao = 'Preço equilibrado com o mercado. Foque no valor agregado.';
+                cor = '#f39c12';
+            } else if (diferenca < 20) {
+                posicionamento = 'Premium';
+                recomendacao = 'Preço premium. Certifique-se de justificar o valor superior.';
+                cor = '#e67e22';
+            } else {
+                posicionamento = 'Muito Alto';
+                recomendacao = 'Preço muito acima do concorrente. Considere reduzir ou destacar diferenciais únicos.';
+                cor = '#e74c3c';
+            }
+            
+            document.getElementById('posicionamento').textContent = posicionamento;
+            document.getElementById('posicionamento').style.color = cor;
+            document.getElementById('recomendacao').textContent = recomendacao;
+        }
+        
+        function salvarSimulacao() {
+            const produtoNome = document.getElementById('produto-nome').value;
+            const categoria = document.getElementById('categoria').value;
+            const custoBase = document.getElementById('custo-base').value;
+            const precoEquilibrado = document.getElementById('preco-equilibrado').textContent;
+            
+            if (!produtoNome || !custoBase || custoBase <= 0) {
+                alert('Preencha o nome do produto e o custo base para salvar a simulação.');
+                return;
+            }
+            
+            const simulacao = {
+                id: Date.now(),
+                nome: produtoNome,
+                categoria: categoria,
+                custoBase: custoBase,
+                precoFinal: precoEquilibrado,
+                data: new Date().toLocaleDateString('pt-BR')
+            };
+            
+            // Salvar no localStorage
+            let simulacoes = JSON.parse(localStorage.getItem('simulacoes_precos')) || [];
+            simulacoes.unshift(simulacao);
+            localStorage.setItem('simulacoes_precos', JSON.stringify(simulacoes));
+            
+            // Atualizar histórico
+            atualizarHistoricoSimulacoes();
+            
+            alert('Simulação salva com sucesso!');
+        }
+        
+        function atualizarHistoricoSimulacoes() {
+            const simulacoes = JSON.parse(localStorage.getItem('simulacoes_precos')) || [];
+            const historicoContainer = document.getElementById('historico-simulacoes');
+            
+            if (simulacoes.length === 0) {
+                historicoContainer.innerHTML = `
+                    <div class="history-empty">
+                        <i class="fas fa-inbox"></i>
+                        <p>Nenhuma simulação salva ainda</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            historicoContainer.innerHTML = simulacoes.slice(0, 5).map(sim => `
+                <div class="history-item">
+                    <div class="history-item-header">
+                        <span class="history-item-title">${sim.nome}</span>
+                        <span class="history-item-date">${sim.data}</span>
+                    </div>
+                    <div class="history-item-details">
+                        <span>Categoria: ${sim.categoria}</span>
+                        <span>Custo: R$ ${sim.custoBase}</span>
+                        <span>Preço: ${sim.precoFinal}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function exportarPDF() {
+            alert('Funcionalidade de exportação para PDF será implementada em breve.');
+        }
+        
+        function formatarMoeda(valor) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(valor);
+        }
+        
+        // Gamification Functions
+        function showAchievements(categoria) {
+            // Remover classe active de todas as abas
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
             });
+            
+            // Esconder todas as grids
+            document.querySelectorAll('.achievements-grid').forEach(grid => {
+                grid.style.display = 'none';
+            });
+            
+            // Ativar aba clicada
+            event.target.classList.add('active');
+            
+            // Mostrar grid correspondente
+            document.getElementById(`achievements-${categoria}`).style.display = 'grid';
+        }
+        
+        function resetarPontuacao() {
+            if (confirm('Tem certeza que deseja resetar a pontuação do período atual? Esta ação não pode ser desfeita.')) {
+                alert('Pontuação resetada com sucesso! Novo período iniciado.');
+                // Aqui seria implementada a lógica de reset no backend
+            }
+        }
+        
+        function exportarRanking() {
+            alert('Exportando ranking em formato Excel...');
+            // Aqui seria implementada a lógica de exportação
+        }
+        
+        // Initialize pricing simulator on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar histórico de simulações
+            atualizarHistoricoSimulacoes();
+            
+            // Preencher valores padrão
+            document.getElementById('margem-lucro').value = '30';
+            document.getElementById('impostos').value = '15';
+            document.getElementById('desconto-max').value = '10';
         });
     </script>
 </body>
