@@ -3146,6 +3146,16 @@
             document.getElementById('margem-lucro').value = '30';
             document.getElementById('impostos').value = '15';
             document.getElementById('desconto-max').value = '10';
+            
+            // Adicionar event listeners para as abas
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    if (tabName) {
+                        switchTab(tabName);
+                    }
+                });
+            });
         });
     </script>
 </body>
