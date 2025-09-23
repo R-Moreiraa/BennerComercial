@@ -2279,7 +2279,13 @@
                 <div class="login-loading" id="loginLoading">Entrando...</div>
             </form>
             
-
+            <div class="login-demo">
+                <h4>Demonstração</h4>
+                <p>Use as credenciais abaixo para testar o sistema:</p>
+                <p><strong>E-mail:</strong> admin@benner.com.br<br>
+                <strong>Senha:</strong> 123456</p>
+                <button type="button" class="demo-btn" onclick="usarCredenciaisDemo()">Usar Credenciais Demo</button>
+            </div>
         </div>
     </div>
 
@@ -3427,6 +3433,7 @@
         
         // Sistema de autenticação local (fallback se Firebase não estiver configurado)
         const localUsers = [
+            { email: 'admin@benner.com.br', password: '123456', name: 'Administrador' },
             { email: 'admin@sistema.com', password: '123456', name: 'Administrador' },
             { email: 'vendedor@sistema.com', password: '123456', name: 'Vendedor' },
             { email: 'gerente@sistema.com', password: '123456', name: 'Gerente' }
@@ -4138,7 +4145,17 @@
             document.getElementById('clienteStatus').value = cliente.status;
             document.getElementById('clienteRegiao').value = cliente.region;
             document.getElementById('clienteEndereco').value = cliente.address || '';
-            document.getElementById('clienteLatitude')        // Event listeners
+            document.getElementById('clienteLatitude').value = cliente.lat.toFixed(6);
+            document.getElementById('clienteLongitude').value = cliente.lng.toFixed(6);
+        }
+        
+        // Função para usar credenciais demo
+        function usarCredenciaisDemo() {
+            document.getElementById('email').value = 'admin@benner.com.br';
+            document.getElementById('password').value = '123456';
+        }
+
+        // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Inicializar sistema de autenticação
             initializeAuth();
@@ -4907,3 +4924,4 @@
     </script>
 </body>
 </html>
+
